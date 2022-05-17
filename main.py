@@ -23,7 +23,7 @@ class Directory:
         else:
             print(f'File not found!')
 
-    def dir(self) -> None:
+    def list(self) -> None:
         for name in os.listdir():
             print(name)
 
@@ -41,7 +41,7 @@ class Directory:
             return self.check_file_name(filename)
         return filename
 
-    def load(self) -> None:
+    def put(self) -> None:
         if self.check_file(self.file_system_name):
             with open(self.file_system_name, 'r') as file:
                 self.path = file.readline(0)
@@ -56,7 +56,8 @@ class Directory:
         return f'{self.path}'
 
 
-def main(argv):
+def main():
+    argv = sys.argv[1:]
     match argv:
         case 'init', *argv:
             directory = Directory(path=os.getcwd())
@@ -78,4 +79,4 @@ def main(argv):
 
 
 if __name__ == '__main__':
-    main(sys.argv[1:])
+    main()
