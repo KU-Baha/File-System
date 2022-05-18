@@ -1,16 +1,9 @@
-import sys, os
-from models import File
+import sys
+from helper import *
 
 
 def main():
     _, command, *args = sys.argv
-    file = File()
-    commands = {
-        'init': file.initializ,
-        'add': file.add,
-        'del': file.delete,
-        'list': file.list
-    }
     if command in commands:
         commands[command](args)
     else:
