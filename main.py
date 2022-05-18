@@ -3,19 +3,16 @@ from models import File
 
 
 def main():
-    command, *args = sys.argv[1:]
+    _, command, *args = sys.argv
     file = File()
     commands = {
         'init': file.initializ,
         'add': file.add,
-        'delete': file.delete,
+        'del': file.delete,
         'list': file.list
     }
     if command in commands:
-        try:
-            commands[command](args[0], args[1:])
-        except:
-            commands[command]()
+        commands[command](args)
     else:
         print('Command not found!')
 
