@@ -8,8 +8,8 @@ def main():
     if command in commands:
         commands[command](*args)
     else:
-        print('Command not found!')
+        print("Command not found!")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
