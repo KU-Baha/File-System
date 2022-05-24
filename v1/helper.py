@@ -4,7 +4,9 @@ import os
 
 
 def check_args(args):
-    return True if len(args) > 0 else False
+    if not len(args) > 0:
+        return False
+    return True
 
 
 def init(path):
