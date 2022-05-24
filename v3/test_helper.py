@@ -31,4 +31,4 @@ def test_list_files():
 def test_get_file():
     for num, file in enumerate(test_files):
         assert get_file(f"{source_path}/{file}", f"{num}.{file}", target_path)
-        assert check_file(f"{target_path}/{num}.{file}")
+        assert Path(f"{target_path}/{num}.{file}").is_file()
