@@ -11,7 +11,7 @@ def add_file(file_path: str, dir_name: str, *args) -> bool:
         return False
     with open(file_path, "rb") as read_file:
         with open(
-            f"{dir_name}/{Path(file_path).stem}{Path(file_path).suffix}", "wb"
+                f"{dir_name}/{Path(file_path).stem}{Path(file_path).suffix}", "wb"
         ) as write_file:
             write_file.write(read_file.read())
     return True
@@ -25,9 +25,10 @@ def delete_file(file_path: str, *args) -> bool:
 
 
 def list_files(dir_path: str, *args) -> list:
-    for i in os.listdir(path=dir_path):
+    dir_list = os.listdir(path=dir_path)
+    for i in dir_list:
         print(i)
-    return os.listdir(path=dir_path)
+    return dir_list
 
 
 def get_file(file_path: str, file_name: str, dir_name: str, *args) -> bool:

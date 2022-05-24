@@ -1,27 +1,34 @@
 from helper import *
 from pathlib import Path
 
+target_path = "test_directory_zeon_fs"
+source_path = "test_values"
+test_files = ["file.txt", "file2.txt", "file3.txt"]
+
 
 def test_init_fs():
-    assert init_fs("test_directory_zeon_fs") is None
-    assert Path("test_directory_zeon_fs").is_dir()
+    assert init_fs(target_path) is None
+    assert Path(target_path).is_dir()
 
 
 def test_add_file():
-    assert add_file("test_values/MyFile.txt", "test_directory_zeon_fs")
-    assert Path("test_directory_zeon_fs/MyFile.txt").is_file()
+    for file in test_files:
+        assert add_file(f"{source_path}/{file}", target_path)
+        assert Path(f"{target_path}/{file}").is_file()
 
 
 def test_delete_file():
-    assert delete_file("test_directory_zeon_fs/MyFile.txt")
-    assert not Path("test_directory_zeon_fs/MyFile.txt").is_file()
+    for file in test_files:
+        assert delete_file(f"{target_path}/{file}")
+        assert not Path(f"{target_path}/{file}").is_file()
 
 
 def test_list_files():
-    assert list_files("test_values") == ["MyFile.txt"]
+    for file in test_files:
+        assert file in list_files(source_path)
 
 
 def test_get_file():
-    assert get_file(
-        "test_values/MyFile.txt", "MyFavoriteFile.txt", "test_directory_zeon_fs"
-    )
+    for num, file in enumerate(test_files):
+        assert get_file(f"{source_path}/{file}", f"{num}.{file}", target_path)
+        assert check_file(f"{target_path}/{num}.{file}")
