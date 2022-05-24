@@ -11,7 +11,7 @@ def add_file(file_path: str, dir_name: str, *args) -> bool:
         return False
     with open(file_path, "rb") as read_file:
         with open(
-                f"{dir_name}/{Path(file_path).stem}{Path(file_path).suffix}", "wb"
+            f"{dir_name}/{Path(file_path).stem}{Path(file_path).suffix}", "wb"
         ) as write_file:
             write_file.write(read_file.read())
     return True
