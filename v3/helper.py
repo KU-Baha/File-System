@@ -2,11 +2,11 @@ from pathlib import Path
 import os
 
 
-def init_fs(dir_name: str) -> None:
+def init_fs(dir_name: str, *args) -> None:
     os.makedirs(dir_name, exist_ok=True)
 
 
-def add_file(file_path: str, dir_name: str) -> bool:
+def add_file(file_path: str, dir_name: str, *args) -> bool:
     if not check_file(file_path):
         return False
     with open(file_path, 'rb') as read_file:
@@ -15,18 +15,20 @@ def add_file(file_path: str, dir_name: str) -> bool:
     return True
 
 
-def delete_file(file_path: str) -> bool:
+def delete_file(file_path: str, *args) -> bool:
     if not check_file(file_path):
         return False
     os.remove(file_path)
     return True
 
 
-def list_files(dir_path: str) -> list:
+def list_files(dir_path: str, *args) -> list:
+    for i in os.listdir(path=dir_path):
+        print(i)
     return os.listdir(path=dir_path)
 
 
-def get_file(file_path: str, file_name: str, dir_name: str) -> bool:
+def get_file(file_path: str, file_name: str, dir_name: str, *args) -> bool:
     if not check_file(file_path):
         return False
     with open(file_path, 'rb') as read_file:
@@ -35,7 +37,7 @@ def get_file(file_path: str, file_name: str, dir_name: str) -> bool:
     return True
 
 
-def check_file(file_path: str) -> bool:
+def check_file(file_path: str, *args) -> bool:
     if not Path(file_path).is_file():
         return False
     return True
