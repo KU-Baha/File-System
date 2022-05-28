@@ -4,6 +4,9 @@ import shutil
 
 
 def init_fs(dir_name: str, *args) -> None:
+    """
+    dir_name: str
+    """
     os.makedirs(dir_name, exist_ok=True)
 
 
