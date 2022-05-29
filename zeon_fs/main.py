@@ -1,19 +1,17 @@
 import sys
 
-from helper import *
+from helper import commands
 
 
 def main():
     try:
         _, command, *args = sys.argv
         if command in commands:
-            commands[command](*args)
+            print(commands[command](*args))
         else:
             print("Command not found!")
-    except TypeError:
-        print('Argument Error')
-    except ValueError:
-        print('Command Error')
+    except Exception as e:
+        print(e)
 
 
 if __name__ == "__main__":
