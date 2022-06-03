@@ -223,8 +223,10 @@ fabric.properties
 
 *.iml
 modules.xml
-.idea/misc.xml
 *.ipr
+*__pycache__/
+.idea
+.pytest_cache
 
 ### venv ###
 # Virtualenv
